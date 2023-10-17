@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>2.Form_Validation</title>
+    <style>
+        form{
+            margin: 100px 350px;
+            padding: 10px;
+            background-color:rgb(13, 153, 232);
+            display: inline-block;
+        }
+        caption{
+            color: white;
+            font-size: 20px;
+        }
+        table{
+            background-color: white;
+        }
+        span{
+            color: red;
+        }
+        button{
+            color: white;
+            background-color:rgb(13, 153, 232);
+            border: none;
+            padding: 5px;
+        }
+        #reset{
+            color: white;
+            background-color:rgb(13, 153, 232);
+            border: none;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="form">
+        <table>
+            <caption>Customer Survey Form </caption>
+            <tr>
+                <td><label for="">First Name</label></td>
+                <td><input type="text" id="fname" placeholder="Enter Your First Name"><span></span></td>
+            </tr>
+            <tr>  
+                <td><label for="">Last Name</label></td>
+                <td><input type="text" id="lname" placeholder="Enter Your Last Name"></td>
+            </tr>
+            <tr>
+                <td><label for="">Date Of Birth(DOB)</label></td>
+                <td><input type="date" id="dob"></td>
+            </tr>
+            <tr>
+                <td><label for="">Country</label></td>
+                <td>
+                    <select  id="country">
+                        <option>India</option>
+                        <option>Australia</option>
+                        <option>Bangladesh</option>
+                        <option>Bhutan</option>
+                        <option>Canada</option>
+                        <option>China</option>
+                        <option>Germany</option>
+                        <option>France</option>
+                        <option>Italy</option>
+                        <option>United States</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="">Gender</label></td>
+                <td><input type="radio" name="gender" value="Male">Male
+                     <input type="radio" name="gender" value="Female">Female</td>
+            </tr>
+            <tr>
+                <td><label for="">Profession</label></td>
+                <td><input type="text" id="profession" placeholder="Enter Your Profession"></td>
+            </tr>
+            <tr>
+                <td><label for="">Email</label></td>
+                <td><input type="email" id="email"placeholder="Enter Your Email"></td>
+            </tr>
+            <tr>
+                <td><label for="">Mobile Number</label></td>
+                <td><input type="text" id="mobile" placeholder="Enter Your Number" maxlength="10"></td>
+            </tr>
+            <tr>
+                <td><label for="">Is this first time You are using our products & service?</label></td>
+            </tr>
+            <tr><td><input type="radio" name="q1" value="Yes">Yes
+                <input type="radio" name="q1" value="No">No</td></tr>
+
+            <tr>
+                <td><label for="">Would you suggestion to your friends and colleague?</label></td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="q2" value="Yes">Yes
+                <input type="radio" name="q2" value="No">No</td></tr>
+            <tr>
+                <td><label for="">How satisfied are you with our company overall?</label></td>
+            </tr>
+            <tr><td><input type="radio" name="q3" value="Satisfied">Satisfied
+                <input type="radio" name="q3" value="Undecided">Undecided
+                <input type="radio" name="q3" value="Unsatisfied">Unsatisfied
+            </td></tr>
+            <tr>
+                 <td colspan="2" align="center">
+                    <button onclick="submitForm()">Submit</button>
+                    <button type="reset">Reset</button>
+                 </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+
+        function submitForm(){
+            let fname=document.getElementById("fname").value;
+            let lname=document.getElementById("lname").value;
+            let dob=document.getElementById("dob").value;
+            let country = document.getElementById("country").value;
+            let gender = document.querySelectorAll('input[name="gender"]:checked');
+            let profession=document.getElementById("profession").value;
+            let email=document.getElementById("email").value;
+            let mobile=document.getElementById("mobile").value;
+            let q1 = document.querySelectorAll('input[name="q1"]:checked');
+            let q2 = document.querySelectorAll('input[name="q2"]:checked');
+            let q3 = document.querySelectorAll('input[name="q3"]:checked');
+
+            if (!fname || !lname || !dob || !country || gender.length === 0 || !profession || !email || !mobile ||q1.length===0 || q2.length===0 || q3.length===0 ) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            let genderValues = [];
+            gender.forEach(function(input) {
+                genderValues.push(input.value);
+            }); 
+
+            let text = "First Name: " + fname + "\n";
+            text += "Last Name: " + lname + "\n";
+            text += "Date of Birth: " + dob + "\n";
+            text += "Country: " + country + "\n";
+            text += "Gender: " + genderValues.join(", ") + "\n";
+            text += "Profession: " + profession + "\n";
+            text += "Email: " + email + "\n";
+            text += "Mobile Number: " + mobile;
+
+            alert(text);
+
+            document.getElementById("form").reset();
+            document.write("Form Submitted Successfully");
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.Reverse_Every_Word_in_Sentence</title>
+</head>
+<body>
+    <script>
+        let s="This is a sunny day";
+		let s1=" ";
+		let res="";
+		for(let i=0;i<s.length;i++) {
+			let c=s.charAt(i);
+			if(c!=' ')s1+=c+"";
+			else {
+				res+=reverse(s1);
+				s1=" ";
+			}
+		}
+		res+=reverse(s1);
+		console.log(res);
+        
+        function reverse(s) {
+            let s1="";
+            for(let i=s.length-1;i>=0;i--) {
+                s1+=s.charAt(i);
+            }
+            return s1;
+        }
+    </script>
+</body>
+</html>

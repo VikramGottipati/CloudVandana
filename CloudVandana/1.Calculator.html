@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>1.Calculator</title>
+    <style>
+        .calculator{
+            margin: 50px auto;
+            background-color: rgb(80, 75, 80);
+            color: white;
+            height: 450px;
+            width: 600px;   
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .input-box{
+            display: flex;
+        }
+        #input{
+            background-color: #fff;
+            width: 210px;
+            height: 65px;
+            display: inline-block;
+            font-size: 15px;
+        }
+        #ac{
+            background-color: lightseagreen;
+        }
+        .btn{
+            height: 70px;
+            width: 70px;
+            font-size: 20px;
+            color: white;
+            display: inline;
+            background-color: black;
+        }
+        .operator{
+            background-color: gray;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="input-box">
+            <input type="text" id="input">
+            <button class="btn" id="ac">AC</button>
+        </div>
+       <div class="buttons">
+        <div>
+            <button class="btn">9</button>
+            <button class="btn">8</button>
+            <button class="btn">7</button>
+            <button class="btn operator">+</button>
+        </div>
+        <div>
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn operator">-</button>
+        </div>
+        <div>
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn operator">/</button>
+        </div>
+        <div>
+            <button class="btn">.</button>
+            <button class="btn">0</button>
+            <button class="btn">=</button>
+            <button class="btn operator">x</button>
+        </div>  
+       </div>
+    </div>
+
+    <script>
+        let inputBox=document.getElementById("input");
+        let btn=document.querySelectorAll(".btn");
+        // console.log(inputBox,btn)
+
+        let str="";
+
+        btn.forEach((e)=>{
+            e.addEventListener("click",(event)=>{
+                // console.log(event.target.innerText);
+                let value=event.target.innerText;
+                if(value=="="){
+                    let res=eval(str);
+                    inputBox.value=""+res;
+                }
+                else if(value=="AC"){
+                    str="";
+                    inputBox.value=str;
+                }
+                else{
+                    str+=value;
+                    inputBox.value=str;
+                }
+            })
+        })
+
+
+    </script>
+
+</body>
+</html>
